@@ -1,12 +1,3 @@
-const NODE_VERSION = process.version.split('.');
-const NODE_MAJOR_VERSION = parseInt(NODE_VERSION[0].replace(/^v/, ''));
-
-// Skip hapi tests for unsupported versions of node
-if (NODE_MAJOR_VERSION < 8) {
-  it('does not run for node versions < 8', () => {});
-  return;
-}
-
 import hapi from 'hapi';
 import { ApolloServer } from '../ApolloServer';
 import { Config } from 'apollo-server-core';
@@ -14,6 +5,7 @@ import { Config } from 'apollo-server-core';
 import testSuite, {
   schema as Schema,
   CreateAppOptions,
+  atLeastMajorNodeVersion,
 } from 'apollo-server-integration-testsuite';
 
 async function createApp(options: CreateAppOptions = {}) {
@@ -41,6 +33,10 @@ async function destroyApp(app) {
   await new Promise(resolve => app.close(resolve));
 }
 
-describe('integration:Hapi', () => {
-  testSuite(createApp, destroyApp);
-});
+// Only run these tests on at least Node.js 8 since Hapi 17 doesn't support less
+(atLeastMajorNodeVersion(8) ? describe : describe.skip)(
+  'integration:Hapi',
+  () => {
+    testSuite(createApp, destroyApp);
+  },
+);

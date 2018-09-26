@@ -1,14 +1,6 @@
-const NODE_VERSION = process.version.split('.');
-const NODE_MAJOR_VERSION = parseInt(NODE_VERSION[0].replace(/^v/, ''));
-
-// Skip hapi tests for unsupported versions of node
-if (NODE_MAJOR_VERSION < 8) {
-  it('does not run for node versions < 8', () => {});
-  return;
-}
-
 import { Server } from 'hapi';
 import {
+  atLeastMajorNodeVersion,
   testApolloServer,
   createServerInfo,
 } from 'apollo-server-integration-testsuite';
@@ -24,7 +16,11 @@ import { ApolloServer } from '../ApolloServer';
 
 const port = 5555;
 
-describe('apollo-server-hapi', () => {
+(
+  atLeastMajorNodeVersion(8)
+  ? describe
+  : describe.skip
+)('apollo-server-hapi', () => {
   let server: ApolloServer;
 
   let app: Server;
@@ -412,8 +408,13 @@ describe('apollo-server-hapi', () => {
         });
       });
     });
-    describe('file uploads', () => {
-      xit('enabled uploads', async () => {
+    // NODE: Intentionally skip file upload tests on Node.js 10 or higher.
+    (
+      atLeastMajorNodeVersion(10)
+      ? describe.skip
+      : describe
+    )('file uploads', () => {
+      it('enabled uploads', async () => {
         server = new ApolloServer({
           typeDefs: gql`
             type File {
