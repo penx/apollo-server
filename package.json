@@ -19,7 +19,9 @@
     "test:ci": "npm run testonly -- --ci --maxWorkers=2",
     "release": "npm run clean && npm ci && lerna publish --exact",
     "precommit": "lint-staged",
-    "clean": "find . -name \"node_modules\" -exec rm -rf '{}' + && find . -name \"dist\" -exec rm -rf '{}' +"
+    "clean": "find . -name \"node_modules\" -exec rm -rf '{}' + && find . -name \"dist\" -exec rm -rf '{}' +",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "lint-staged": {
     "*.ts": [
@@ -55,7 +57,8 @@
     "apollo-server-lambda": "file:packages/apollo-server-lambda",
     "apollo-server-micro": "file:packages/apollo-server-micro",
     "apollo-tracing": "file:packages/apollo-tracing",
-    "graphql-extensions": "file:packages/graphql-extensions"
+    "graphql-extensions": "file:packages/graphql-extensions",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/async-retry": "1.2.1",
@@ -141,5 +144,6 @@
         "skipBabel": true
       }
     }
-  }
+  },
+  "snyk": true
 }
