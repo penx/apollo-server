@@ -1,0 +1,48 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-express > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-cloudflare > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-hapi > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-integration-testsuite > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-koa > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-lambda > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-micro > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-express > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-cloudflare > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-hapi > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-integration-testsuite > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-koa > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-lambda > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server-micro > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server > apollo-server-express > apollo-server-core > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
+    - apollo-server > apollo-server-express > apollo-server-core > apollo-engine-reporting > lodash:
+        patched: '2020-05-01T00:51:56.847Z'
